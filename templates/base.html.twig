@@ -15,7 +15,7 @@
     </head>
     <body>
         <header>{% include '_navbar.html.twig' %}</header>
-        {% block body %}{% endblock %}
+        <div class="container">{% block body %}{% endblock %}</div>
 
         <script src="/build/app.js"></script>
         {% block javascripts %}
