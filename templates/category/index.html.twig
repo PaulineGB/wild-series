@@ -1,18 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} All categories {% endblock %}
+{% block title %} Catégories {% endblock %}
 
-{% block body %}
-    <h1 class="text-center mt-5">| Toutes les catégories |</h1>
-    {% for category in categories %}
-        <div class="mt-5 mb-5">
-            <h2>{{ loop.index }} | Catégorie : {{ category.name }}</h2>
-            <a href="{{ path("category_show", { categoryName: category.name }) }}">Voir les séries de cette catégorie</a>
+{% block content %}
+    <div class="imageheader d-flex justify-content-center">
+        <img src="https://s2.qwant.com/thumbr/0x380/5/6/d392e0147f3343137f290cf4d20d010dd965d63879d63d7dd976a86fda539e/66782c88e7203ef2228f09279d00dcab-768x432.jpg?u=https%3A%2F%2Fwww.rockandpop.cl%2Fwp-content%2Fuploads%2F2020%2F05%2F66782c88e7203ef2228f09279d00dcab-768x432.jpg&q=0&b=1&p=0&a=0" alt="carroussel">
+        <img src="https://s2.qwant.com/thumbr/0x380/5/6/d392e0147f3343137f290cf4d20d010dd965d63879d63d7dd976a86fda539e/66782c88e7203ef2228f09279d00dcab-768x432.jpg?u=https%3A%2F%2Fwww.rockandpop.cl%2Fwp-content%2Fuploads%2F2020%2F05%2F66782c88e7203ef2228f09279d00dcab-768x432.jpg&q=0&b=1&p=0&a=0" alt="carroussel">
+        <img src="https://s2.qwant.com/thumbr/0x380/5/6/d392e0147f3343137f290cf4d20d010dd965d63879d63d7dd976a86fda539e/66782c88e7203ef2228f09279d00dcab-768x432.jpg?u=https%3A%2F%2Fwww.rockandpop.cl%2Fwp-content%2Fuploads%2F2020%2F05%2F66782c88e7203ef2228f09279d00dcab-768x432.jpg&q=0&b=1&p=0&a=0" alt="carroussel">
+    </div>
+    <div class="container">
+        <h1 class="text-center mt-5">| LES CATÉGORIES |</h1>
+        <div class="row row-col-4">
+            {% for category in categories %}
+                <div class="col-4 d-flex justify-content-center">
+                    <div class="card m-5" style="max-width: 18rem;">
+                        <div class="card-body">
+                            <h3>{{ loop.index }} | {{ category.name }}</h3>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <button class="btn btn-outline-dark"><a class="text-reset text-decoration-none" href="{{ path("category_show", { categoryName: category.name }) }}">Voir la catégorie</a></button>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                Aucune catégorie trouvée.
+            {% endfor %}
         </div>
-    {% else %}
-        Aucune catégorie trouvée.
-    {% endfor %}
-    <a href="{{ path('app_index') }}">
-        Retour à l'accueil
-    </a>
+        <div class="retour text-center">
+            <button class="btn btn-dark"><a class="text-reset text-decoration-none" href="{{ path('app_index') }}">
+                Retour à l'accueil
+            </a></button>
+        </div>
+    </div>
 {% endblock %}

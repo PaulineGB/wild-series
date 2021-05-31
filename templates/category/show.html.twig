@@ -2,20 +2,32 @@
 
 {% block title %} {{ category.name }} {% endblock %}
 
-{% block body %}
-    <h1 class="text-center mt-5 mb-5">| Les trois dernières séries de la catégorie {{ category.name }} |</h1>
-    <div class="media">
-        {% for program in programs %}
-            <div class="media-body mb-5">
-                <h2>{{ loop.index }} | {{ program.title }}</h2>
-                <p>{{ program.summary }}</p>
-                <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
-            </div>
-        {% else %}
-            Aucune série trouvée.
-        {% endfor %}
-        <a href="{{ path('app_index') }}">
-            Retour à l'accueil
-        </a>
+{% block content %}
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5 text-uppercase">| SÉRIES DE LA CATÉGORIE {{ category.name }} |</h1>
+        <div class="row row-col-4">
+            {% for program in programs %}
+                <div class="col-4 d-flex justify-content-center">
+                    <div class="card m-5" style="max-width: 18rem;">
+                        <img src="{{ program.poster }}" class="card-img-top" alt="serie cover">
+                        <div class="card-body">
+                            <h3>{{ loop.index }} | {{ program.title }}</h3>
+                            <p class="border-top border-bottom border-color-dark">Catégorie : {{ program.category.name }}</p>
+                            <p>{{ program.summary }}</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <button class="btn btn-outline-dark"><a class="text-reset text-decoration-none" href="{{ path("program_show", { id: program.id }) }}">Voir la série</a></button>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <p class="fs-3 text-center">Aucune série trouvée.</p>
+            {% endfor %}
+        </div>
+        <div class="retour d-flex justify-content-center mt-5">
+            <button class="btn btn-dark"><a class="text-reset text-decoration-none" href="{{ path('category_index') }}">
+                Retour à la liste des catégories
+            </a></button>
+        </div>
     </div>
 {% endblock %}

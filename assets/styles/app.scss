@@ -11,9 +11,44 @@ $light: white;
 body {
   background-color: $dark;
   color: $light;
+  min-height: 100vh;
   font-family: "Lato", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.imageheader {
+  overflow: hidden;
 }
 
 .search a {
   color: $dark;
+}
+
+.footer p {
+  color: $dark;
+}
+
+.card {
+  color: $dark;
+}
+
+.card-group {
+  color: $dark;
+}
+
+.card-body {
+  color: $dark;
+}
+
+.card-footer {
+  color: $dark;
+}
+
+.cardblack {
+  background-color: $dark;
 }

@@ -2,8 +2,53 @@
 
 {% block title %} Wild Series {% endblock %}
 
-{% block body %}
-    <section class="titre mt-5">
-        <h1 class="text-center fs-1">| BIENVENUE |</h1>
-    </section>
+{% block content %}
+    <div class="imageheader d-flex justify-content-center">
+        <img src="https://s2.qwant.com/thumbr/0x380/d/6/31ca37595be48a3837950b8ec64032687438d403f45658b3b1ad615e08b247/series-capa.jpg?u=https%3A%2F%2Fwww.oficinadanet.com.br%2Fimagens%2Fpost%2F23416%2Fseries-capa.jpg&q=0&b=1&p=0&a=0" alt="carroussel">
+        <img src="https://s2.qwant.com/thumbr/0x380/d/6/31ca37595be48a3837950b8ec64032687438d403f45658b3b1ad615e08b247/series-capa.jpg?u=https%3A%2F%2Fwww.oficinadanet.com.br%2Fimagens%2Fpost%2F23416%2Fseries-capa.jpg&q=0&b=1&p=0&a=0" alt="carroussel">
+        <img src="https://s2.qwant.com/thumbr/0x380/d/6/31ca37595be48a3837950b8ec64032687438d403f45658b3b1ad615e08b247/series-capa.jpg?u=https%3A%2F%2Fwww.oficinadanet.com.br%2Fimagens%2Fpost%2F23416%2Fseries-capa.jpg&q=0&b=1&p=0&a=0" alt="carroussel">
+    </div>
+    <div class="container">
+        <section class="series">
+            <section class="titre mt-5">
+                <h1 class="text-center fs-1">| NOS SÉRIES À LA UNE |</h1>
+            </section>
+            <div class="row row-col-4">
+                {% for i in 0..2 %}
+                <div class="col-4 d-flex justify-content-center">
+                    <div class="card m-5" style="max-width: 18rem;">
+                        <img src="{{ programs[i].poster }}" class="card-img-top" alt="serie cover">
+                        <div class="card-body">
+                            <h3>{{ loop.index }} | {{ programs[i].title }}</h3>
+                            <p class="border-top border-bottom border-color-dark">Catégorie : {{ programs[i].category.name }}</p>
+                            <p>{{ programs[i].summary }}</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <button class="btn btn-outline-dark"><a class="text-reset text-decoration-none" href="{{ path("program_show", { id: programs[i].id }) }}">Voir la série</a></button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        <section class="series">
+            <section class="titre mt-5">
+                <h1 class="text-center fs-1">| LES DIFFÉRENTES CATGÉORIES |</h1>
+            </section>
+            <div class="row row-col-4">
+                {% for i in 0..2 %}
+                <div class="col-4 d-flex justify-content-center">
+                    <div class="card m-5" style="max-width: 18rem;">
+                        <div class="card-body">
+                            <h3>{{ loop.index }} | {{ categories[i].name }}</h3>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <button class="btn btn-outline-dark"><a class="text-reset text-decoration-none" href="{{ path("category_show", { categoryName: categories[i].name }) }}">Voir la catégorie</a></button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
 {% endblock %}

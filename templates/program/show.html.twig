@@ -1,18 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Série #{{ program.id }} {% endblock %}
+{% block title %} {{ program.title }} {% endblock %}
 
-{% block body %}
-    <div class="media">
-    <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
-    <div class="media-body">
-        <h1 class="mt-0">{{ program.title }}</h1>
-        <p>{{ program.summary }}</p>
-        <p>Catégorie : {{ program.category.name }}</p>
+{% block content %}
+<div class="container">
+    <div class="card cardblack m-5 border-white">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster" style="max-width: 18rem;">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body text-white">
+                    <h1 class="mt-5 mb-5 text-uppercase">| {{ program.title }} |</h1>
+                    <h3 class="border-top border-bottom border-color-white mb-5">Catégorie : {{ program.category.name }}</h3>
+                    <p>{{ program.summary }}</p>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="retour d-flex justify-content-center mt-5">
+        <button class="btn btn-dark"><a class="text-reset text-decoration-none" href="{{ path('program_index') }}">
+            Retour à la liste des séries
+        </a></button>
     </div>
-
-    <a href="{{ path('program_index') }}">
-        Retour à la liste des programmes
-    </a>
+</div>
 {% endblock %}
