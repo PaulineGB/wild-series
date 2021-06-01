@@ -12,8 +12,8 @@
         <h1 class="text-center mt-5">| LES CATÉGORIES |</h1>
         <div class="row row-col-4">
             {% for category in categories %}
-                <div class="col-4 d-flex justify-content-center">
-                    <div class="card m-5" style="max-width: 18rem;">
+                <div class="col-lg-4 d-flex justify-content-center">
+                    <div class="card m-5" style="min-width: 14rem;">
                         <div class="card-body">
                             <h3>{{ loop.index }} | {{ category.name }}</h3>
                         </div>

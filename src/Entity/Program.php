@@ -35,6 +35,16 @@ class Program
     private $poster;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $country;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $year;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Category::class , inversedBy="programs")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -87,6 +97,30 @@ class Program
     public function setPoster(?string $poster): self
     {
         $this->poster = $poster;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getYear(): ?int
+    {
+        return $this->year;
+    }
+
+    public function setYear(int $year): self
+    {
+        $this->year = $year;
 
         return $this;
     }
