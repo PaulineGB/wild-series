@@ -41,24 +41,13 @@ class Program
     private $category;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $country;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $year;
-
-    /**
      * @ORM\OneToMany(targetEntity=Season::class, mappedBy="program")
      */
-    private $no;
+    private $seasons;
 
     public function __construct()
     {
         $this->seasons = new ArrayCollection();
-        $this->no = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -114,54 +103,30 @@ class Program
         return $this;
     }
 
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(string $country): self
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    public function getYear(): ?int
-    {
-        return $this->year;
-    }
-
-    public function setYear(int $year): self
-    {
-        $this->year = $year;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Season[]
      */
-    public function getNo(): Collection
+    public function getSeasons(): Collection
     {
-        return $this->no;
+        return $this->seasons;
     }
 
-    public function addNo(Season $no): self
+    public function addSeason(Season $season): self
     {
-        if (!$this->no->contains($no)) {
-            $this->no[] = $no;
-            $no->setProgram($this);
+        if (!$this->seasons->contains($season)) {
+            $this->seasons[] = $season;
+            $season->setProgramId($this);
         }
 
         return $this;
     }
 
-    public function removeNo(Season $no): self
+    public function removeSeason(Season $season): self
     {
-        if ($this->no->removeElement($no)) {
+        if ($this->seasons->removeElement($season)) {
             // set the owning side to null (unless already changed)
-            if ($no->getProgram() === $this) {
-                $no->setProgram(null);
+            if ($season->getProgramId() === $this) {
+                $season->setProgramId(null);
             }
         }
 
