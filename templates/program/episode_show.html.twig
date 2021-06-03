@@ -12,22 +12,17 @@
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <div class="card-body text-white">
                         <h1 class="mt-5 mb-5 text-uppercase"> {{ program.title }} | SAISON {{ season.number }}</h1>
-                        <p class="mb-3">{{ season.description }}</p>
-                        <h4 class="mb-3">Liste des épisodes</h4>
+                        <h4 class="mb-3">EPISODE {{ episode.number }} | {{ episode.title }}</h4>
                         <div class="season border-top border-color-white">
-                            <div class="mt-3">
-                                {% for episode in episodes %}
-                                    <a href="{{ path("program_episode_show", { programId: program.id, seasonId: season.id, episodeId: episode.id }) }}" class="text-reset text-decoration-none"><h6>{{ episode.number }} | {{ episode.title }}</h6></a>
-                                {% endfor %}
-                            </div>
+                            <h4 class="mt-3 mb-3">{{ episode.synopsis }}</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="retour d-flex justify-content-center mt-5">
-            <button class="btn btn-dark"><a class="text-reset text-decoration-none" href="{{ path("program_show", { id: program.id }) }}">
-                Retour à la fiche de {{ program.title }}
+            <button class="btn btn-dark"><a class="text-reset text-decoration-none" href="{{ path("program_season_show", { programId: program.id, seasonId: season.id }) }}">
+                Retour à la saison {{ season.number }} de {{ program.title }}
             </a></button>
         </div>
     </div>
