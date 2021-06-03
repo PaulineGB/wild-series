@@ -21,8 +21,23 @@ body {
   flex-grow: 1;
 }
 
-.imageheader {
+.header {
+  display: inline-block;
+  position: relative;
+}
+
+.header img {
   overflow: hidden;
+  max-width: 100%;
+}
+
+.textheader {
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  position: absolute;
+  top: 30%;
+  width: 60%;
+  left: 20%;
 }
 
 .search a {

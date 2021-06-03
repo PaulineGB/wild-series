@@ -3,10 +3,14 @@
 {% block title %} Wild Series {% endblock %}
 
 {% block content %}
-    <div class="imageheader d-flex justify-content-center">
-        <img src="https://s2.qwant.com/thumbr/0x380/d/6/31ca37595be48a3837950b8ec64032687438d403f45658b3b1ad615e08b247/series-capa.jpg?u=https%3A%2F%2Fwww.oficinadanet.com.br%2Fimagens%2Fpost%2F23416%2Fseries-capa.jpg&q=0&b=1&p=0&a=0" alt="carroussel">
-        <img src="https://s2.qwant.com/thumbr/0x380/d/6/31ca37595be48a3837950b8ec64032687438d403f45658b3b1ad615e08b247/series-capa.jpg?u=https%3A%2F%2Fwww.oficinadanet.com.br%2Fimagens%2Fpost%2F23416%2Fseries-capa.jpg&q=0&b=1&p=0&a=0" alt="carroussel">
-        <img src="https://s2.qwant.com/thumbr/0x380/d/6/31ca37595be48a3837950b8ec64032687438d403f45658b3b1ad615e08b247/series-capa.jpg?u=https%3A%2F%2Fwww.oficinadanet.com.br%2Fimagens%2Fpost%2F23416%2Fseries-capa.jpg&q=0&b=1&p=0&a=0" alt="carroussel">
+    <div class="header">
+        <img src="{{ asset('build/header.png') }}" class="imageheader" alt="carroussel">
+        <div class="textheader p-5">
+            <h1 class="text-center fs-1">| WILD SERIES |</h1>
+        </div>
+        <div class="scrollheader text-center">
+            <h1 class="text-center fs-1">▼</h1>
+        </div>
     </div>
     <div class="container">
         <section class="series">
@@ -33,7 +37,7 @@
         </section>
         <section class="series">
             <section class="titre mt-5">
-                <h1 class="text-center fs-1">| LES DIFFÉRENTES CATGÉORIES |</h1>
+                <h1 class="text-center fs-1">| LES CATGÉORIES À LA UNE |</h1>
             </section>
             <div class="row row-col-4">
                 {% for i in 0..2 %}

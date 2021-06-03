@@ -37,7 +37,6 @@ class CategoryController extends AbstractController
      * @Route("/{categoryName}", name="show")
      * @return Response
      */
-
     public function show(string $categoryName):Response
     {
         $category = $this->getDoctrine()
