@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nouvelle category {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5 text-uppercase">| AJOUTER UNE CATÉGORIE |</h1>
+        <div class="form mt-5 d-flex justify-content-center">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input type='submit' value='Add category'>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
