@@ -3,37 +3,36 @@
 {% block title %} Les saisons {% endblock %}
 
 {% block body %}
-    <h1>| TOUTES LES SAISONS |</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Number</th>
-                <th>Year</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for season in seasons %}
-            <tr>
-                <td>{{ season.id }}</td>
-                <td>{{ season.number }}</td>
-                <td>{{ season.year }}</td>
-                <td>{{ season.description }}</td>
-                <td>
-                    <a href="{{ path('season_show', {'id': season.id}) }}">show</a>
-                    <a href="{{ path('season_edit', {'id': season.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('season_new') }}">Create new</a>
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5 text-uppercase">| TOUTES LES SAISONS |</h1>
+        <table class="table text-light">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>NUMÉRO</th>
+                    <th>ANNÉE</th>
+                    <th>DESCRIPTION</th>
+                    <th>ACTIONS</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for season in seasons %}
+                <tr>
+                    <td>{{ season.id }}</td>
+                    <td>{{ season.number }}</td>
+                    <td>{{ season.year }}</td>
+                    <td>{{ season.description }}</td>
+                    <td><button class="btn btn-light"><a href="{{ path('season_show', {'id': season.id}) }}" class="text-reset text-decoration-none">Voir</a></button></td>
+                    <td><button class="btn btn-light"><a href="{{ path('season_edit', {'id': season.id}) }}" class="text-reset text-decoration-none">Modifier</a></button></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucune donnée.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <button class="btn btn-dark mt-3"><a href="{{ path('season_new') }}" class="text-reset text-decoration-none">Créer une nouvelle saison</a></button>
+    </div>
 {% endblock %}
