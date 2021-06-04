@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Modifier l'épisode {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5 text-uppercase">| MODIFIER L'ÉPISODE |</h1>
+
+        {{ include('episode/_form.html.twig', {'button_label': 'Valider la modification'}) }}
+
+        <div class="d-flex justify-content-center"><button class="btn btn-dark"><a href="{{ path('episode_index') }}" class="text-reset text-decoration-none">Revenir à la liste des épisodes</a></button></div>
+
+        <div class="supprimer d-flex justify-content-center mt-3">
+            <button class="btn btn-light"><a data-bs-toggle="modal" data-bs-target="#delete{{ episode.id }}">Supprimer cet épisode</a></button>
+            <div class="modal fade" id="delete{{ episode.id }}" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content text-dark">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Souhaitez-vous supprimer définitivement cet épisode ?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                            {{ include('episode/_delete_form.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
