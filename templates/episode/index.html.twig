@@ -1,54 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Les saisons {% endblock %}
+{% block title %} Les épisodes {% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1 class="text-center mt-5 mb-5 text-uppercase">| TOUTES LES SAISONS |</h1>
+        <h1 class="text-center mt-5 mb-5 text-uppercase">| TOUS LES ÉPISODES |</h1>
         <table class="table text-light">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>N°</th>
-                    <th>ANNÉE</th>
-                    <th>DESCRIPTION</th>
+                    <th>TITRE</th>
+                    <th>SYNOPSIS</th>
                     <th>ACTIONS</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-            {% for season in seasons %}
+            {% for episode in episodes %}
                 <tr>
-                    <td>{{ season.id }}</td>
-                    <td>{{ season.number }}</td>
-                    <td>{{ season.year }}</td>
-                    <td>{{ season.description }}</td>
-                    <td><button class="btn btn-light"><a type="button" class="text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#saison{{ season.id }}">Voir</a></button>
-                        <div class="season">
+                    <td>{{ episode.id }}</td>
+                    <td>{{ episode.number }}</td>
+                    <td>{{ episode.title }}</td>
+                    <td>{{ episode.synopsis }}</td>
+                    <td><button class="btn btn-light"><a type="button" class="text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#episode{{ episode.id }}">Voir</a></button>
+                        <div class="episode">
                             <div class="mt-3">
-                                <div class="modal fade" id="saison{{ season.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="episode{{ episode.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content bg-dark">
                                             <div class="modal-header">
-                                                <h5 class="modal-title text-uppercase" id="exampleModalLabel">| SAISON {{ season.number }} |</h5>
+                                                <h5 class="modal-title text-uppercase" id="exampleModalLabel">| ÉPISODE {{ episode.number }} |</h5>
                                                 <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <h6 class="mb-3 fst-italic">{{ season.year }}</h6>
-                                                <p class="mt-3 mb-3">{{ season.description }}</p>
+                                                <h6 class="mb-3 fst-italic">{{ episode.title }}</h6>
+                                                <p class="mt-3 mb-3">{{ episode.synopsis }}</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button class="btn btn-light"><a href="{{ path('season_edit', {'id': season.id}) }}" class="text-reset text-decoration-none">Modifier</a></button>
-                                                <button class="btn btn-light"><a data-bs-toggle="modal" data-bs-target="#delete{{ season.id }}">Supprimer</a></button>
-                                                <div class="modal fade" id="delete{{ season.id }}" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
+                                                <button class="btn btn-light"><a href="{{ path('episode_edit', {'id': episode.id}) }}" class="text-reset text-decoration-none">Modifier</a></button>
+                                                <button class="btn btn-light"><a data-bs-toggle="modal" data-bs-target="#delete{{ episode.id }}">Supprimer</a></button>
+                                                <div class="modal fade" id="delete{{ episode.id }}" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content text-dark">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">Souhaitez-vous supprimer définitivement cette saison ?</h5>
+                                                                <h5 class="modal-title">Souhaitez-vous supprimer définitivement cet épisode ?</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                {{ include('season/_delete_form.html.twig') }}
+                                                                {{ include('episode/_delete_form.html.twig') }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                     </td>
-                    <td><button class="btn btn-light"><a href="{{ path('season_edit', {'id': season.id}) }}" class="text-reset text-decoration-none">Modifier</a></button></td>
+                    <td><button class="btn btn-light"><a href="{{ path('episode_edit', {'id': episode.id}) }}" class="text-reset text-decoration-none">Modifier</a></button></td>
                 </tr>
             {% else %}
                 <tr>
@@ -69,6 +69,6 @@
             {% endfor %}
             </tbody>
         </table>
-        <div class="d-flex justify-content-end mt-3"><button class="btn btn-light"><a href="{{ path('season_new') }}" class="text-reset text-decoration-none">Créer une nouvelle saison</a></button></div>
+        <div class="d-flex justify-content-end mt-3"><button class="btn btn-light"><a href="{{ path('episode_new') }}" class="text-reset text-decoration-none">Créer un nouvel épisode</a></button></div>
     </div>
 {% endblock %}
