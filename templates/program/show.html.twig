@@ -11,13 +11,23 @@
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <div class="card-body text-white">
-                        <h1 class="mt-5 mb-5 text-uppercase">| {{ program.title }} |</h1>
-                        <h3 class="border-top border-bottom border-color-white mb-5">Catégorie : {{ program.category.name }}</h3>
-                        <p>{{ program.summary }}</p>
-                        <div class="season border-top border-color">
-                            <div class="mt-3 mb-3">
+                        <h1 class="mt-5 text-uppercase">| {{ program.title }} |</h1>
+                        <h3 class="border-top border-bottom border-color-white mt-4 mb-3">Catégorie : {{ program.category.name }}</h3>
+                        <p class="pt-2">{{ program.summary }}</p>
+                        <div class="season pt-2">
+                            <div class="mt-3 mb-3 d-flex justify-content-center">
                             {% for season in seasons %}
-                                <h4 class="fst-italic"><a href="{{ path("program_season_show", { programId: program.id, seasonId: season.id }) }}" class="text-reset text-decoration-none">Saison {{ season.number }}</a></h4>
+                                <div class="px-3"><button class="btn btn-light"><a href="{{ path("program_season_show", { programId: program.id, seasonId: season.id }) }}" class="text-reset text-decoration-none">| Saison {{ season.number }} |</a></button></div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        <div class="actors pt-4">
+                            <h4 class="text-center border-top border-color-white pt-3">Acteurs principaux</h4>
+                            <div class="pt-3 d-flex justify-content-center">
+                            {% for actor in program.actors %}
+                                <h6 class="px-3"><a href="{{ path("program_actor_show", { programId: program.id, actorId: actor.id }) }}" class="text-reset text-decoration-none">{{ actor.name }}</a></h6>
+                            {% else %}
+                                <p>Il n'y a pas encore d'acteurs renseignés pour cette série.</p>
                             {% endfor %}
                             </div>
                         </div>

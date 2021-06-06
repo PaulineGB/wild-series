@@ -1,10 +1,15 @@
 {{ form_start(form) }}
     <div class="mb-3 text-center">NUMÉRO</div>
+    <div class="text-end">{{ form_errors(form.number) }}</div>
     <div class="mb-3 text-center">{{ form_widget(form.number) }}</div>
     <div class="mb-3 text-center">ANNÉE</div>
+    <div class="text-end">{{ form_errors(form.year) }}</div>
     <div class="mb-3 text-center">{{ form_widget(form.year) }}</div>
     <div class="mb-3 text-center">DESCRIPTION</div>
+    <div class="text-end">{{ form_errors(form.description) }}</div>
     <div class="mb-3 text-center">{{ form_widget(form.description) }}</div>
-    <div class="mb-3 text-center">SÉRIE ASSOCIÉE : {{ form_widget(form.program) }}</div>
+    <div class="mb-3 text-center">SÉRIE ASSOCIÉE</div>
+    <div class="text-end">{{ form_errors(form.program) }}</div>
+    <div class="mb-3 text-center">{{ form_widget(form.program) }}</div>
     <div class="text-center"><button class="btn btn-dark mt-3 mb-3">{{ button_label|default('Enregistrer') }}</button></div>
 {{ form_end(form) }}

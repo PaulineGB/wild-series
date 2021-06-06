@@ -6,6 +6,7 @@ use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\Category;
 use App\Entity\Episode;
+use App\Entity\Actor;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -69,11 +70,11 @@ class ProgramController extends AbstractController
      * @Route("/show/{id<^[0-9]+$>}", methods={"GET"}, name="show")
      * @return Response
      */
-    public function show(Program $program):Response
+    public function show(Program $program): Response
     {
         if (!$program) {
             throw $this->createNotFoundException(
-                'No program found in program\'s table.'
+                "Il n'existe pas de série correspondant à ce numéro."
             );
         }
 
@@ -115,6 +116,20 @@ class ProgramController extends AbstractController
             'program' => $programId,
             'season' => $seasonId,
             'episode' => $episodeId,
+        ]);
+    }
+
+    /**
+     * Getting an actor by id
+     *
+     * @Route("/{programId}/actor/{actorId}", methods={"GET"}, name="actor_show")
+     * @return Response
+     */
+    public function showActor(Program $programId, Actor $actorId)
+    {
+        return $this->render('program/actor_show.html.twig', [
+            'program' => $programId,
+            'actor' => $actorId,
         ]);
     }
 }
