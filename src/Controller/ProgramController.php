@@ -1,17 +1,18 @@
 <?php
-// src/Controller/ProgramController.php
+
 namespace App\Controller;
 
 use App\Entity\Program;
 use App\Entity\Season;
-use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Actor;
+use App\Service\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\ProgramType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * @Route("/programs", name="program_")
@@ -41,7 +42,7 @@ class ProgramController extends AbstractController
      *
      * @Route("/new", name="new")
      */
-    public function new(Request $request) : Response
+    public function new(Request $request, Slugify $slugify) : Response
     {
         // Create a new Program Object
         $program = new Program();
@@ -53,6 +54,8 @@ class ProgramController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $slug = $slugify->generate($program->getTitle());
+            $program->setSlug($slug);
             $entityManager->persist($program);
             $entityManager->flush();
             return $this->redirectToRoute('program_index');
@@ -67,7 +70,8 @@ class ProgramController extends AbstractController
     /**
      * Getting a program by id
      *
-     * @Route("/show/{id<^[0-9]+$>}", methods={"GET"}, name="show")
+     * @Route("/{slug}", methods={"GET"}, name="show")
+     * @ParamConverter("program", class="App\Entity\Program", options={"mapping": {"slug": "slug"}})
      * @return Response
      */
     public function show(Program $program): Response
@@ -90,16 +94,17 @@ class ProgramController extends AbstractController
     /**
      * Getting a season by id
      *
-     * @Route("/{programId}/season/{seasonId}", methods={"GET"}, name="season_show")
+     * @Route("/{programSlug}/season/{seasonId}", methods={"GET"}, name="season_show")
+     * @ParamConverter("program", class="App\Entity\Program", options={"mapping": {"programSlug": "slug"}})
      * @return Response
      */
-    public function showSeason(Program $programId, Season $seasonId)
+    public function showSeason(Program $program, Season $season)
     {
-        $episodes = $seasonId->getEpisodes();
+        $episodes = $season->getEpisodes();
 
         return $this->render('program/season_show.html.twig', [
-            'program' => $programId,
-            'season' => $seasonId,
+            'program' => $program,
+            'season' => $season,
             'episodes' => $episodes,
         ]);
     }
@@ -107,28 +112,32 @@ class ProgramController extends AbstractController
     /**
      * Getting an episode by id
      *
-     * @Route("/{programId}/seasons/{seasonId}/episodes/{episodeId}", methods={"GET"}, name="episode_show")
+     * @Route("/{programSlug}/season/{seasonId}/episode/{episodeSlug}", methods={"GET"}, name="episode_show")
+     * @ParamConverter("program", class="App\Entity\Program", options={"mapping": {"programSlug": "slug"}})
+     * @ParamConverter("season", class="App\Entity\Season", options={"mapping": {"seasonId": "id"}})
+     * @ParamConverter("episode", class="App\Entity\Episode", options={"mapping": {"episodeSlug": "slug"}})
      * @return Response
      */
-    public function showEpisode(Program $programId, Season $seasonId, Episode $episodeId)
+    public function showEpisode(Program $program, Season $season, Episode $episode)
     {
         return $this->render('program/episode_show.html.twig', [
-            'program' => $programId,
-            'season' => $seasonId,
-            'episode' => $episodeId,
+            'program' => $program,
+            'season' => $season,
+            'episode' => $episode,
         ]);
     }
 
     /**
      * Getting an actor by id
      *
-     * @Route("/{programId}/actor/{actorId}", methods={"GET"}, name="actor_show")
+     * @Route("/{programSlug}/actor/{actorId}", methods={"GET"}, name="actor_show")
+     * @ParamConverter("program", class="App\Entity\Program", options={"mapping": {"programSlug": "slug"}})
      * @return Response
      */
-    public function showActor(Program $programId, Actor $actorId)
+    public function showActor(Program $program, Actor $actorId)
     {
         return $this->render('program/actor_show.html.twig', [
-            'program' => $programId,
+            'program' => $program,
             'actor' => $actorId,
         ]);
     }

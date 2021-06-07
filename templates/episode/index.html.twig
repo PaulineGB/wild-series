@@ -38,7 +38,7 @@
                                                 <p class="mt-3 mb-3">{{ episode.synopsis }}</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button class="btn btn-light"><a href="{{ path('episode_edit', {'id': episode.id}) }}" class="text-reset text-decoration-none">Modifier</a></button>
+                                                <button class="btn btn-light"><a href="{{ path('episode_edit', {slug: episode.slug}) }}" class="text-reset text-decoration-none">Modifier</a></button>
                                                 <button class="btn btn-light"><a data-bs-toggle="modal" data-bs-target="#delete{{ episode.id }}">Supprimer</a></button>
                                                 <div class="modal fade" id="delete{{ episode.id }}" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                     </td>
-                    <td><button class="btn btn-light"><a href="{{ path('episode_edit', {'id': episode.id}) }}" class="text-reset text-decoration-none">Modifier</a></button></td>
+                    <td><button class="btn btn-light"><a href="{{ path('episode_edit', {slug: episode.slug}) }}" class="text-reset text-decoration-none">Modifier</a></button></td>
                 </tr>
             {% else %}
                 <tr>
