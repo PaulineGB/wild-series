@@ -8,4 +8,4 @@ Lien pour la vidéo Symfony13 : https://www.loom.com/share/33229d6ab56d410593051
 Lien pour la vidéo Symfony14 : https://www.loom.com/share/9e75adebf9a04aefb6581e45b869d7c8
 Lien pour la vidéo Symfony15 : https://www.loom.com/share/fbe16c0397b34cf0aa53c5061e9eadf9
 Lien pour la vidéo Symfony16 : https://www.loom.com/share/ae57d336c77c4f8bb9addfa8b5cef30f
-Lien pour la vidéo SYmfony17 : https://www.loom.com/share/e1cbdd6348394e8ca6587a226ebad707
+Lien pour la vidéo Symfony17 : https://www.loom.com/share/e1cbdd6348394e8ca6587a226ebad707
