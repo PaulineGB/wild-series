@@ -28,7 +28,7 @@
                             <p>{{ programs[i].summary }}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-center">
-                            <button class="btn btn-outline-dark"><a class="text-reset text-decoration-none" href="{{ path("program_show", { id: programs[i].id }) }}">Voir la série</a></button>
+                            <button class="btn btn-outline-dark"><a class="text-reset text-decoration-none" href="{{ path("program_show", { slug: programs[i].slug }) }}">Voir la série</a></button>
                         </div>
                     </div>
                 </div>

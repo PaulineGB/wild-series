@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="retour d-flex justify-content-center mt-5">
-            <button class="btn btn-dark"><a class="text-reset text-decoration-none" href="{{ path("program_season_show", { programId: program.id, seasonId: season.id }) }}">
+            <button class="btn btn-dark"><a class="text-reset text-decoration-none" href="{{ path("program_season_show", { programSlug: program.slug, seasonId: season.id }) }}">
                 Retour à la saison {{ season.number }} de {{ program.title }}
             </a></button>
         </div>

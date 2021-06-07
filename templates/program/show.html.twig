@@ -17,7 +17,7 @@
                         <div class="season pt-2">
                             <div class="mt-2 mb-2 d-flex justify-content-center">
                             {% for season in seasons %}
-                                <div class="px-3"><button class="btn btn-light"><a href="{{ path("program_season_show", { programId: program.id, seasonId: season.id }) }}" class="text-reset text-decoration-none">| Saison {{ season.number }} |</a></button></div>
+                                <div class="px-3"><button class="btn btn-light"><a href="{{ path("program_season_show", { programSlug: program.slug, seasonId: season.id }) }}" class="text-reset text-decoration-none">| Saison {{ season.number }} |</a></button></div>
                             {% endfor %}
                             </div>
                         </div>
@@ -25,7 +25,7 @@
                             <h4 class="text-center border-top border-color-white pt-3">Acteurs principaux</h4>
                             <div class="pt-3 d-flex justify-content-center">
                             {% for actor in program.actors %}
-                                <h6 class="px-3"><a href="{{ path("program_actor_show", { programId: program.id, actorId: actor.id }) }}" class="text-reset text-decoration-none">{{ actor.name }}</a></h6>
+                                <h6 class="px-3"><a href="{{ path("program_actor_show", { programSlug: program.slug, actorId: actor.id }) }}" class="text-reset text-decoration-none">{{ actor.name }}</a></h6>
                             {% else %}
                                 <p>Il n'y a pas encore d'acteurs renseignés pour cette série.</p>
                             {% endfor %}
