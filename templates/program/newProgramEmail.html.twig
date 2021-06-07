@@ -1,0 +1,16 @@
+{% extends 'layoutEmail.html.twig' %}
+
+{% block title %} Nouvelle série ! {% endblock %}
+
+{% block body %}
+    <h1>| Nouvelle série créée : {{ program.title }} |</h1>
+    <p>Bonjour !</p>
+    <p>La nouvelle série <strong>{{ program.title }}</strong> vient d'être créée sur le site Wild Series.</p>
+    <h3>👉 Information sur la série</h3>
+    <p>TITRE : {{ program.title }}</p>
+    <p>CATÉGORIE ASSOCIÉE : {{ program.category.name }}</p>
+    <p>RÉSUMÉ : {{ program.summary }}</p>
+    <p>Pour voir l'épisode directement sur le site, suivre <a href="{{ path('program_show', {'slug': program.slug}) }}">ce lien</a></p>
+    <hr>
+    <h6>Ce mail est envoyé automatiquement, merci de ne pas y répondre.</h6>
+{% endblock %}

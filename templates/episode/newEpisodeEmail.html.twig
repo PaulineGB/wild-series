@@ -1,0 +1,18 @@
+{% extends 'layoutEmail.html.twig' %}
+
+{% block title %} Nouvel épisode ! {% endblock %}
+
+{% block body %}
+    <h1>| Nouvel épisode créé : {{ episode.title }} |</h1>
+    <p>Bonjour !</p>
+    <p>Le nouvel épisode <strong>{{ episode.title }}</strong> vient d'être créé sur le site Wild Series.</p>
+    <h3>👉 Information sur l'épisode</h3>
+    <p>NUMÉRO : {{ episode.number }}</p>
+    <p>TITRE : {{ episode.title }}</p>
+    <p>RÉSUMÉ : {{ episode.synopsis }}</p>
+    <p>SÉRIE ASSOCIÉE : {{ episode.season.program.title }}</p>
+    <p>SAISON ASSOCIÉE : {{ episode.season.number }}</p>
+    <p>Pour voir l'épisode directement sur le site, suivre <a href="{{ path('episode_show', {'slug': episode.slug}) }}">ce lien</a></p>
+    <hr>
+    <h6>Ce mail est envoyé automatiquement, merci de ne pas y répondre.</h6>
+{% endblock %}
