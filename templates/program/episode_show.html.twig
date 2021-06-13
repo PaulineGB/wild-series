@@ -29,9 +29,29 @@
                             <div class="card mb-5 text-center" style="border-color: white;">
                                 <div class="card-body">
                                     <h5 class="card-title">Note : {{ comment.rate }}/ 5</h5>
-                                    <div class="email-Mess card-text">Auteur : {{ comment.author.username }}</div>
+                                    <div class="email-Mess card-text">Auteur : {{ comment.author.email }}</div>
                                     <br>
                                     <div class="card-text">{{ comment.comment }}</div>
+                                </div>
+                                <div class="card-footer mt-3 border-white" style="background-color:white;">
+                                {% if app.user %}
+                                    {% if is_granted("ROLE_ADMIN") or app.user.email == comment.author.email %}
+                                        <button class="btn btn-outline-dark"><a data-bs-toggle="modal" data-bs-target="#delete{{ episode.id }}">Supprimer</a></button>
+                                            <div class="modal fade" id="delete{{ episode.id }}" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content text-dark">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Souhaitez-vous supprimer définitivement ce commentaire ?</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                    <div class="modal-footer">
+                                                        {{ include('program/_delete_form_comment.html.twig') }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -41,17 +61,19 @@
                 <h5 class="text-center mb-5 fst-italic">Il n'y a pas encore de commentaire sur cet épisode.</h5>
             {% endif %}
         </div>
-        {% if is_granted('ROLE_CONTRIBUTOR') %}
-            <div class="comment border-top border-white">
-                <h3 class="text-center mt-5">| PUBLIER UN NOUVEAU COMMENTAIRE |</h3>
-                {{ form_start(form) }}
-                    <div class="mt-5 mb-3 text-center">COMMENTAIRE</div>
-                    <div class="mb-3 text-center">{{ form_widget(form.comment) }}</div>
-                    <div class="mb-3 text-center">NOTE</div>
-                    <div class="mb-3 text-center">{{ form_widget(form.rate) }}</div>
-                    <div class="text-center"><button class="btn btn-dark mt-3 mb-3">{{ button_label|default('Publier') }}</button></div>
-                {{ form_end(form) }}
-            </div>
+        {% if app.user %}
+            {% if is_granted('ROLE_CONTRIBUTOR') %}
+                <div class="comment border-top border-white">
+                    <h3 class="text-center mt-5">| PUBLIER UN NOUVEAU COMMENTAIRE |</h3>
+                    {{ form_start(form) }}
+                        <div class="mt-5 mb-3 text-center">COMMENTAIRE</div>
+                        <div class="mb-3 text-center">{{ form_widget(form.comment) }}</div>
+                        <div class="mb-3 text-center">NOTE</div>
+                        <div class="mb-3 text-center">{{ form_widget(form.rate) }}</div>
+                        <div class="text-center"><button class="btn btn-dark mt-3 mb-3">{{ button_label|default('Publier') }}</button></div>
+                    {{ form_end(form) }}
+                </div>
+            {% endif %}
         {% endif %}
         <div class="retour d-flex justify-content-center mt-5 border-top border-white">
             <button class="btn btn-dark mt-3"><a class="text-reset text-decoration-none" href="{{ path("program_season_show", { programSlug: program.slug, seasonId: season.id }) }}">

@@ -36,9 +36,12 @@
             </div>
         </div>
         <div class="retour d-flex justify-content-center mt-5">
-            <button class="btn btn-dark"><a class="text-reset text-decoration-none" href="{{ path('program_index') }}">
-                Retour à la liste des séries
-            </a></button>
+            <button class="btn btn-dark mx-3"><a class="text-reset text-decoration-none" href="{{ path('program_index') }}">Retour à la liste des séries</a></button>
+            {% if app.user %}
+                {% if is_granted("ROLE_ADMIN") %}
+                    <button class="btn btn-dark mx-3"><a class="text-reset text-decoration-none" href="{{ path("program_edit", { slug: program.slug }) }}">Éditer</a></button>
+                {% endif %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}
