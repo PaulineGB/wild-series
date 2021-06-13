@@ -53,6 +53,7 @@ class UserFixtures extends Fixture
             $contributor->setUsername($data['username']);
             $contributor->setRoles(['ROLE_CONTRIBUTOR']);
             $contributor->setPassword($this->passwordEncoder->encodePassword($contributor, $data['password']));
+            $this->setReference('user_1', $contributor);
 
             $manager->persist($contributor);
         }
