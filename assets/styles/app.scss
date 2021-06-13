@@ -71,3 +71,27 @@ body {
 a:hover {
   font-weight: bolder;
 }
+
+.connexion a {
+  color: $dark;
+}
+
+#talkbubble {
+  background: white;
+  position: relative;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 20px;
+  padding-top: 2vw;
+}
+
+#talkbubble:before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 26px;
+  border-top: 13px solid transparent;
+  border-right: 26px solid white;
+  border-bottom: 13px solid transparent;
+}

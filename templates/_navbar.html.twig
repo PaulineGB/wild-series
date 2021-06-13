@@ -20,6 +20,13 @@
                     <li><a class="dropdown-item text-reset text-decoration-none" href="/categories/fantastique/">| FANTASTIQUE |</a></li>
                 </ul>
             </li>
+            {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/season/">| SAISONS |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/episode/">| ÉPISODES |</a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">| AJOUTER |</a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -29,13 +36,15 @@
                     <li><a class="dropdown-item text-reset text-decoration-none" href="/episode/new">| AJOUTER UN ÉPISODE |</a></li>
                 </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/season/">| SAISONS |</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/episode/">| ÉPISODES |</a>
-            </li>
+            {% endif %}
         </ul>
+    </div>
+    <div class="connexion px-3">
+        {% if app.user %}
+            <a class="connexion text-decoration-none" href="{{ path('app_logout') }}">| SE DÉCONNECTER |</a>
+        {% else %}
+            <a class="connexion text-decoration-none" href="{{ path('app_login') }}">| SE CONNECTER |</a>
+        {% endif %}
     </div>
     <div class="search">
         <form class="d-flex">
