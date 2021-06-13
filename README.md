@@ -11,3 +11,4 @@ Lien pour la vidéo Symfony16 : https://www.loom.com/share/ae57d336c77c4f8bb9add
 Lien pour la vidéo Symfony17 : https://www.loom.com/share/e1cbdd6348394e8ca6587a226ebad707
 Lien pour la vidéo Symfony18 : https://www.loom.com/share/f7304b41e96b43728fbaefbfe330905a
 Lien pour la vidéo Symfony19 : https://www.loom.com/share/222610d98b9149a0bf74e910f6d965bb
+Lien pour la vidéo Symfony20 : https://www.loom.com/share/6bb2a9525e6d45eea7c00c04e7ed9bee

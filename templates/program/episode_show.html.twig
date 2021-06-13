@@ -14,14 +14,47 @@
                         <h1 class="mt-5 mb-5 text-uppercase"> {{ program.title }} | SAISON {{ season.number }}</h1>
                         <h4 class="mb-3 fst-italic">ÉPISODE {{ episode.number }} | {{ episode.title }}</h4>
                         <div class="season border-top border-color-white">
-                            <h4 class="mt-3 mb-3">{{ episode.synopsis }}</h4>
+                            <h6 class="mt-3 mb-3">{{ episode.synopsis }}</h6>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="retour d-flex justify-content-center mt-5">
-            <button class="btn btn-dark"><a class="text-reset text-decoration-none" href="{{ path("program_season_show", { programSlug: program.slug, seasonId: season.id }) }}">
+        <div class="displayComment">
+            {% if comments == true %}
+                <div class="row row-col-4">
+                    <h3 class="text-center mb-5">| TOUS LES COMMENTAIRES |</h3>
+                    {% for comment in comments %}
+                        <div class="col d-flex justify-content-center mb-5" id="talkbubble" style="max-width: 18rem;">
+                            <div class="card mb-5 text-center" style="border-color: white;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Note : {{ comment.rate }}/ 5</h5>
+                                    <div class="email-Mess card-text">Auteur : {{ comment.author.username }}</div>
+                                    <br>
+                                    <div class="card-text">{{ comment.comment }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h5 class="text-center mb-5 fst-italic">Il n'y a pas encore de commentaire sur cet épisode.</h5>
+            {% endif %}
+        </div>
+        {% if is_granted('ROLE_CONTRIBUTOR') %}
+            <div class="comment border-top border-white">
+                <h3 class="text-center mt-5">| PUBLIER UN NOUVEAU COMMENTAIRE |</h3>
+                {{ form_start(form) }}
+                    <div class="mt-5 mb-3 text-center">COMMENTAIRE</div>
+                    <div class="mb-3 text-center">{{ form_widget(form.comment) }}</div>
+                    <div class="mb-3 text-center">NOTE</div>
+                    <div class="mb-3 text-center">{{ form_widget(form.rate) }}</div>
+                    <div class="text-center"><button class="btn btn-dark mt-3 mb-3">{{ button_label|default('Publier') }}</button></div>
+                {{ form_end(form) }}
+            </div>
+        {% endif %}
+        <div class="retour d-flex justify-content-center mt-5 border-top border-white">
+            <button class="btn btn-dark mt-3"><a class="text-reset text-decoration-none" href="{{ path("program_season_show", { programSlug: program.slug, seasonId: season.id }) }}">
                 Retour à la saison {{ season.number }} de {{ program.title }}
             </a></button>
         </div>

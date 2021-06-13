@@ -17,21 +17,7 @@
                         <div class="season border-top border-color-white">
                             {% for episode in episodes %}
                                 <div class="mt-3">
-                                    <a type="button" class="text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#episode{{ episode.id }}"><h6 class="fst-italic">{{ episode.number }} | {{ episode.title }}</h6></a>
-                                    <div class="modal fade" id="episode{{ episode.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content bg-dark">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title text-uppercase" id="exampleModalLabel">{{ program.title }} | SAISON {{ season.number }}</h5>
-                                                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <h6 class="mb-3 fst-italic">ÉPISODE {{ episode.number }} | {{ episode.title }}</h6>
-                                                    <p class="mt-3 mb-3">{{ episode.synopsis }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <a class="text-reset text-decoration-none" href="{{ path("program_episode_show", { programSlug: program.slug, seasonId: season.id, episodeSlug: episode.slug }) }}"><h6 class="fst-italic">{{ episode.number }} | {{ episode.title }}</h6></a>
                                 </div>
                             {% endfor %}
                         </div>
