@@ -41,9 +41,11 @@
     </div>
     <div class="connexion px-3">
         {% if app.user %}
+            <a class="connexion text-decoration-none" href="{{ path('app_profile') }}">| MON COMPTE |</a>
             <a class="connexion text-decoration-none" href="{{ path('app_logout') }}">| SE DÉCONNECTER |</a>
         {% else %}
             <a class="connexion text-decoration-none" href="{{ path('app_login') }}">| SE CONNECTER |</a>
+            <a class="connexion text-decoration-none" href="{{ path('app_register') }}">| S'ENREGISTRER |</a>
         {% endif %}
     </div>
     <div class="search">
