@@ -49,10 +49,9 @@
         {% endif %}
     </div>
     <div class="search">
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
-            <div class="d-flex align-items-end"><a class="search" type="submit"><span class="material-icons">search</span></a></div>
-        </form>
+        <div class="d-flex">
+            {% include '_search.html.twig' %}
+        </div>
     </div>
   </div>
 </nav>

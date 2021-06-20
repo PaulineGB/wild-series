@@ -1,4 +1,10 @@
-# wild-series
+# Welcome to WILD SERIES 👋
+
+Wild Series is a school project. Goal: take its first steps on symfony by coding a web application that allows users to record series online and leave them reviews.
+
+## WILD SERIES VIDEOS
+
+Video links to wilders for quests correction:
 
 Lien pour la vidéo Symfony09 : https://www.loom.com/share/9308a6d0b8e54571bfc27e11a2515dda
 Lien pour la vidéo Symfony10 : https://www.loom.com/share/09a7620593c84b8fae2f5c2041d435f7
@@ -14,3 +20,27 @@ Lien pour la vidéo Symfony19 : https://www.loom.com/share/222610d98b9149a0bf74e
 Lien pour la vidéo Symfony20 : https://www.loom.com/share/6bb2a9525e6d45eea7c00c04e7ed9bee
 Lien pour la vidéo Symfony21 : https://www.loom.com/share/ec8e1a4e5e1f46369dfc7e196a076b67
 Lien pour la vidéo Symfony22 : https://www.loom.com/share/95ed770820044c0faa12a0d42592d4b5
+
+## Usage
+
+```sh
+composer install
+yarn install
+yarn encore dev
+symfony server:start
+```
+
+## Author
+
+👤 **Wilders from Wild Code School**
+
+- Github: [@PaulineGB](https://github.com/PaulineGB)
+- LinkedIn: [@p-guiho-blanchard](https://www.linkedin.com/in/p-guiho-blanchard/)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+---
+
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_%

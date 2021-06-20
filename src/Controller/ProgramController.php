@@ -10,6 +10,7 @@ use App\Entity\Comment;
 use App\Entity\Actor;
 use App\Form\CommentType;
 use App\Form\ProgramType;
+use App\Form\SearchProgramType;
 use App\Service\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,6 +20,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use App\Repository\ProgramRepository;
 
 /**
  * @Route("/programs", name="program_")
@@ -37,10 +39,9 @@ class ProgramController extends AbstractController
             ->getRepository(Program::class)
             ->findAll();
 
-        return $this->render(
-            'program/index.html.twig',
-            ['programs' => $programs]
-        );
+        return $this->render('program/index.html.twig', [
+            'programs' => $programs,
+            ]);
     }
 
     /**
